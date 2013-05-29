@@ -10,6 +10,9 @@ import scalafx.scene.layout.BorderPane
 import scalafx.stage.Stage
 
 
+/** Example of displaying an FX dialog without starting an FX application.
+  * Dialog is displayed in a "non-modal" manner (thread from which dialog is displayed is not blocked).
+  */
 object StandAloneFXDialog extends App {
 
   // Shortcut to initialize JavaFX, force initialization by creating JFXPanel() object
