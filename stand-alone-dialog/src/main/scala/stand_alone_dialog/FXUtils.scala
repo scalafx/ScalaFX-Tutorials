@@ -59,7 +59,7 @@ object FXUtils {
     }
   }
 
-  /** Invokes spcified code blocl `op` on JavaFX Application Thread and waits while it's finished. Like
+  /** Invokes specified code block `op` on JavaFX Application Thread and waits while it's finished. Like
     * SwingUtilities.invokeAndWait does for EDT.
     *
     * Based on blog post by Hendrik: "invokeAndWait for JavaFX"
