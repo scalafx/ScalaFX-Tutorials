@@ -31,14 +31,14 @@ object StandAloneFXDialog extends App {
           padding = Insets(25)
           bottom = new Button {
             text = "Click me to close the dialog"
-            onAction = outer.close
+            onAction = outer.close()
           }
         }
       }
     }
 
     // Show dialog and wait till it is closed
-    dialogStage.showAndWait
+    dialogStage.showAndWait()
 
     // Force application exit
     System.exit(0)

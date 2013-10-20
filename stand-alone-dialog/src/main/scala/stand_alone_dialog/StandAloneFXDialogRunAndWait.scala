@@ -50,13 +50,13 @@ object StandAloneFXDialogRunAndWait extends App {
           padding = Insets(25)
           bottom = new Button {
             text = message
-            onAction = outer.close
+            onAction = outer.close()
           }
         }
       }
     }
 
     // Show dialog and wait till it is closed
-    dialogStage.showAndWait
+    dialogStage.showAndWait()
   }
 }
