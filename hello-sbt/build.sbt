@@ -12,3 +12,6 @@ libraryDependencies += "org.scalafx" %% "scalafx" % "1.0.0-M6"
 
 // Add dependency on JavaFX library based on JAVA_HOME variable
 unmanagedJars in Compile += Attributed.blank(file(System.getenv("JAVA_HOME") + "/jre/lib/jfxrt.jar"))
+
+// Fork a new JVM for 'run' and 'test:run', to avoid JavaFX double initialization problems
+fork := true
