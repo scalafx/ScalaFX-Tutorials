@@ -8,3 +8,6 @@ Examples of using ScalaFX. Each example is a stand-alone complete project
 
 *  __stand-alone-dialog__:
    shows how to display a ScalaFX dialog (stage) without using JFXApp. You can use this approach, for instance, to show a JavaFX dialog from a command line or from a Swing application.
+
+*  __event-filters__:
+   demonstrates use of ScalaFX Event Filter API. The code is based on JavaFX example [Handling JavaFX Events, Part 3 Working with Event Filters](http://docs.oracle.com/javafx/2/events/filters.htm).
