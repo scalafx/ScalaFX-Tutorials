@@ -31,7 +31,7 @@ object StandAloneFXDialog extends App {
           padding = Insets(25)
           bottom = new Button {
             text = "Click me to close the dialog"
-            onAction = outer.close()
+            onAction = handle { outer.close() }
           }
         }
       }

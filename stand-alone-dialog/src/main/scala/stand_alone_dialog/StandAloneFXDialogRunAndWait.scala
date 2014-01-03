@@ -50,7 +50,7 @@ object StandAloneFXDialogRunAndWait extends App {
           padding = Insets(25)
           bottom = new Button {
             text = message
-            onAction = outer.close()
+            onAction = handle { outer.close() }
           }
         }
       }
