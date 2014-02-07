@@ -12,5 +12,9 @@ Examples of using ScalaFX. Each example is a stand-alone complete project
 *  __event-filters__:
    demonstrates use of ScalaFX Event Filter API. The code is based on JavaFX example [Handling JavaFX Events, Part 3 Working with Event Filters](http://docs.oracle.com/javafx/2/events/filters.htm).
 
+*  __molecule-3d__:
+   ScalaFX 8 example of using 3D graphics. Based on tutorial [Getting Started with JavaFX 3D Graphics](http://docs.oracle.com/javafx/8/3d_graphics/jfxpub-3d_graphics.htm) by Cindy Castillo and John Yoon.
+
 *  __scalafxml-example__:
-   demonstrates use os FXML with ScalaFX using [ScalaFXML](https://github.com/vigoo/scalafxml) library.
+   demonstrates use of FXML with ScalaFX using [ScalaFXML](https://github.com/vigoo/scalafxml) library.
+
