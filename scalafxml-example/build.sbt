@@ -8,8 +8,8 @@ resourceDirectory in Compile := (scalaSource in Compile).value
 
 // Add managed dependency on ScalaFX library
 libraryDependencies ++= Seq(
-  "org.scalafx" %% "scalafx" % "1.0.0-M7",
-  "org.scalafxml" %% "scalafxml-core" % "0.1"
+  "org.scalafx" %% "scalafx"        % "1.0.0-M7",
+  "org.scalafx" %% "scalafxml-core" % "0.1"
 )
 
 addCompilerPlugin("org.scalamacros" % "paradise" % "2.0.0-M1" cross CrossVersion.full)
