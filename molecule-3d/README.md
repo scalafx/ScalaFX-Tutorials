@@ -9,4 +9,4 @@ Requirements
 ------------
 
 * Java 8 
-* ScalaFX 8 M3
+* ScalaFX 8 R4

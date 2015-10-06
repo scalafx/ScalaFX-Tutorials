@@ -9,3 +9,5 @@ libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.60-R9"
 
 // Fork a new JVM for 'run' and 'test:run'
 fork := true
+
+//fork in console := true
