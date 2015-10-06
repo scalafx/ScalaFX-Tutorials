@@ -40,8 +40,8 @@ object DraggablePanelsExample2 extends JFXApp {
       confirmationPanel.relocate(0, 67)
       progressPanel.relocate(0, 106)
 
-      content = Seq(loginPanel, confirmationPanel, progressPanel)
-      alignmentInParent = Pos.TOP_LEFT
+      children = Seq(loginPanel, confirmationPanel, progressPanel)
+      alignmentInParent = Pos.TopLeft
     }
 
     val dragModeCheckbox = new CheckBox("Drag mode") {
@@ -107,9 +107,9 @@ object DraggablePanelsExample2 extends JFXApp {
     }
 
     new HBox(6) {
-      content = Seq(
+      children = Seq(
         new VBox(2) {
-          content = Seq(
+          children = Seq(
             new RadioButton("High") {
               toggleGroup = toggleGroup1
               selected = true
@@ -125,19 +125,19 @@ object DraggablePanelsExample2 extends JFXApp {
           )
         },
         new VBox(2) {
-          content = Seq(textField, passwordField)
+          children = Seq(textField, passwordField)
         },
         choiceBox
       )
 
-      alignment = Pos.BOTTOM_LEFT
+      alignment = Pos.BottomLeft
       style = borderStyle
     }
   }
 
   private def createConfirmationPanel(): Node = new HBox(6) {
     val acceptanceLabel = new Label("Not Available")
-    content = Seq(
+    children = Seq(
       new Button("Accept") {
         onAction = handle {acceptanceLabel.text = "Accepted"}
       },
@@ -146,7 +146,7 @@ object DraggablePanelsExample2 extends JFXApp {
       },
       acceptanceLabel
     )
-    alignment = Pos.CENTER_LEFT
+    alignment = Pos.CenterLeft
     style = borderStyle
   }
 
@@ -155,7 +155,7 @@ object DraggablePanelsExample2 extends JFXApp {
     val progressIndicator = new ProgressIndicator() {
       progress <== slider.value / slider.max
     }
-    content = Seq(new Label("Progress:"), slider, progressIndicator)
+    children = Seq(new Label("Progress:"), slider, progressIndicator)
     style = borderStyle
   }
 

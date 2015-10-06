@@ -2,16 +2,13 @@
 name := "Hello SBT"
 
 // Project version
-version := "1.0.2"
+version := "1.0.3"
 
 // Version of Scala used by the project
-scalaVersion := "2.10.3"
+scalaVersion := "2.11.7"
 
 // Add dependency on ScalaFX library
-libraryDependencies += "org.scalafx" %% "scalafx" % "1.0.0-M7"
-
-// Add dependency on JavaFX library based on JAVA_HOME variable
-unmanagedJars in Compile += Attributed.blank(file(System.getenv("JAVA_HOME") + "/jre/lib/jfxrt.jar"))
+libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.60-R9"
 
 // Fork a new JVM for 'run' and 'test:run', to avoid JavaFX double initialization problems
 fork := true
