@@ -48,7 +48,7 @@ object MoleculeSampleDemo extends JFXApp {app =>
 
   stage = new JFXApp.PrimaryStage {
     scene = new Scene(root, 1024, 768, depthBuffer = true, antiAliasing = SceneAntialiasing.Balanced) {
-      fill = Color.GRAY
+      fill = Color.Gray
       title = "Molecule Sample Application"
       camera = app.camera
     }
@@ -75,16 +75,16 @@ object MoleculeSampleDemo extends JFXApp {app =>
 
   private def buildAxes() {
     val redMaterial = new PhongMaterial {
-      diffuseColor = Color.DARKRED
-      specularColor = Color.RED
+      diffuseColor = Color.DarkRed
+      specularColor = Color.Red
     }
     val greenMaterial = new PhongMaterial {
-      diffuseColor = Color.DARKGREEN
-      specularColor = Color.GREEN
+      diffuseColor = Color.DarkGreen
+      specularColor = Color.Green
     }
     val blueMaterial = new PhongMaterial {
-      diffuseColor = Color.DARKBLUE
-      specularColor = Color.BLUE
+      diffuseColor = Color.DarkBlue
+      specularColor = Color.Blue
     }
     val xAxis = new Box(240.0, 1, 1) {
       material = redMaterial
@@ -101,16 +101,16 @@ object MoleculeSampleDemo extends JFXApp {app =>
 
   private def buildMolecule() {
     val redMaterial = new PhongMaterial {
-      diffuseColor = Color.DARKRED
-      specularColor = Color.RED
+      diffuseColor = Color.DarkRed
+      specularColor = Color.Red
     }
     val whiteMaterial = new PhongMaterial {
-      diffuseColor = Color.WHITE
-      specularColor = Color.LIGHTBLUE
+      diffuseColor = Color.White
+      specularColor = Color.LightBlue
     }
     val greyMaterial = new PhongMaterial {
-      diffuseColor = Color.DARKGREY
-      specularColor = Color.GREY
+      diffuseColor = Color.DarkGrey
+      specularColor = Color.Grey
     }
     val oxygenSphere = new Sphere(40.0) {
       material = redMaterial
@@ -200,7 +200,7 @@ object MoleculeSampleDemo extends JFXApp {app =>
     //    val moveCamera: Boolean = true
     scene.onKeyPressed = (event: KeyEvent) => {
       //      val currentTime: Duration = null
-      event.getCode match {
+      event.code match {
         case KeyCode.Z =>
           if (event.isShiftDown) {
             cameraXform.ry.setAngle(0.0)
