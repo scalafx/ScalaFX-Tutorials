@@ -1,6 +1,6 @@
 name := "ScalaFXML Example"
 
-version := "1.0.3"
+version := "1.0.4"
 
 scalaVersion := "2.11.8"
 
@@ -8,7 +8,7 @@ resourceDirectory in Compile := (scalaSource in Compile).value
 
 // Add managed dependency on ScalaFX library
 libraryDependencies ++= Seq(
-  "org.scalafx" %% "scalafx" % "8.0.92-R10",
+  "org.scalafx" %% "scalafx" % "8.0.102-R11",
   "org.scalafx" %% "scalafxml-core-sfx8" % "0.2.2"
 )
 
