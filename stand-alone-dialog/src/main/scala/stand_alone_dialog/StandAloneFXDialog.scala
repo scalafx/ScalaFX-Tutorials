@@ -41,6 +41,6 @@ object StandAloneFXDialog extends App {
     dialogStage.showAndWait()
 
     // Force application exit
-    System.exit(0)
+    Platform.exit()
   }
 }

@@ -1,7 +1,9 @@
 package stand_alone_dialog
 
 import javafx.embed.swing.JFXPanel
+
 import scalafx.Includes._
+import scalafx.application.Platform
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.control.Button
@@ -15,13 +17,16 @@ import scalafx.stage.Stage
   */
 object StandAloneFXDialogRunAndWait extends App {
 
+  // Prevent JavaFX from auto exiting, it may happen after first dialog is closed and before second is opened.
+  Platform.implicitExit = false
+
   // Shortcut to initialize JavaFX, force initialization by creating JFXPanel() object
   // (we will not use it for anything else)
   new JFXPanel()
 
   // Create the first dialog stage and display it on JavaFX Application Thread
   // Wait for the dialog to close before proceeding
-  FXUtils.runAndWait {
+  FXUtils.onFXAndWait {
     showInDialog("Click me to close the FIRST dialog")
   }
 
@@ -29,14 +34,14 @@ object StandAloneFXDialogRunAndWait extends App {
 
   // Create the second dialog stage and display it on JavaFX Application Thread
   // Wait for the dialog to close before proceeding
-  FXUtils.runAndWait {
+  FXUtils.onFXAndWait {
     showInDialog("Click me to close the SECOND dialog")
   }
 
   println("First dialog closed.")
 
-  // Force application exit
-  System.exit(0)
+  // Tell JavaFX that we want to exit.
+  Platform.exit()
 
 
   /** Show a `message` in a dialog box, wait till dialog is closed */
@@ -50,7 +55,7 @@ object StandAloneFXDialogRunAndWait extends App {
           padding = Insets(25)
           bottom = new Button {
             text = message
-            onAction = handle { outer.close() }
+            onAction = handle {outer.close()}
           }
         }
       }

@@ -24,6 +24,8 @@ Examples of using ScalaFX. Each example is a stand-alone complete project
    demonstrates use of FXML with ScalaFX using [ScalaFXML](https://github.com/vigoo/scalafxml)
    library.
 
+* [__splash-demo__](splash-demo): Displays a splash stage with a progress bar during startup then opens main application stage.
+
 * [__stand-alone-dialog__](stand-alone-dialog):
    shows how to display a ScalaFX dialog (stage) without using JFXApp. You can use this approach,
    for instance, to show a JavaFX dialog from a command line or from a Swing application.
