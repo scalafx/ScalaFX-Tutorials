@@ -47,7 +47,7 @@ class ContactsView(val model: ContactsViewModel) {
     }
   }
 
-  model.selectionModel = table.selectionModel.value
+  model.selectedItems = table.selectionModel.value.selectedItems
 
   private val addButton = new Button {
     text = "Add"
