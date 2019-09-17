@@ -26,4 +26,4 @@ fork := true
 
 //fork in console := true
 
-shellPrompt := { state => System.getProperty("user.name") + s":${name.value}> " }
+shellPrompt := { _ => System.getProperty("user.name") + s":${name.value}> " }

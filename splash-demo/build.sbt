@@ -21,7 +21,7 @@ val osName = System.getProperty("os.name") match {
 libraryDependencies ++= javafxModules.map(m => "org.openjfx" % s"javafx-$m" % "12.0.2" classifier osName)
 
 
-shellPrompt := { state => System.getProperty("user.name") + "> " }
+shellPrompt := { _ => System.getProperty("user.name") + "> " }
 
 // set the main class for the main 'run' task
 // change Compile to Test to set it for 'test:run'

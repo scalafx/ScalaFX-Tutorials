@@ -17,16 +17,14 @@ object SlickTableDemo extends JFXApp {
 
   // Catch unhandled exceptions on FX Application thread
   Thread.currentThread().setUncaughtExceptionHandler(
-    new Thread.UncaughtExceptionHandler {
-      override def uncaughtException(t: Thread, ex: Throwable): Unit = {
-        ex.printStackTrace()
-        new Alert(AlertType.Error) {
-          initOwner(owner)
-          title = "Unhandled exception"
-          headerText = "Exception: " + ex.getClass + ""
-          contentText = Option(ex.getMessage).getOrElse("")
-        }.showAndWait()
-      }
+    (_: Thread, ex: Throwable) => {
+      ex.printStackTrace()
+      new Alert(AlertType.Error) {
+        initOwner(owner)
+        title = "Unhandled exception"
+        headerText = "Exception: " + ex.getClass + ""
+        contentText = Option(ex.getMessage).getOrElse("")
+      }.showAndWait()
     }
   )
 

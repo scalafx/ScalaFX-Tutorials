@@ -32,7 +32,7 @@ object SAMDemo extends JFXApp {
         children = Seq(
           new Button {
             text = "Print message (2)"
-            onAction = { ae => println("some message") }
+            onAction =  _ => println("some message") 
           }
         )
       }

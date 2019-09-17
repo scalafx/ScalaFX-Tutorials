@@ -64,7 +64,7 @@ object DraggablePanelsExample extends JFXApp {
 
     new Group(node) {
       filterEvent(MouseEvent.Any) {
-        (me: MouseEvent) =>
+        me: MouseEvent =>
           if (dragModeActiveProperty()) {
             me.eventType match {
               case MouseEvent.MousePressed =>

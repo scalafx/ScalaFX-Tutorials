@@ -28,4 +28,4 @@ libraryDependencies ++= javafxModules.map(m => "org.openjfx" % s"javafx-$m" % "1
 // Fork a new JVM for 'run' and 'test:run', to avoid JavaFX double initialization problems
 fork := true
 
-shellPrompt := { state => System.getProperty("user.name") + s":${name.value}> " }
+shellPrompt := { _ => System.getProperty("user.name") + s":${name.value}> " }
