@@ -1,8 +1,6 @@
 package stand_alone_dialog
 
 import javafx.embed.swing.JFXPanel
-
-import scalafx.Includes._
 import scalafx.application.Platform
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
@@ -45,7 +43,7 @@ object StandAloneFXDialogRunAndWait extends App {
 
 
   /** Show a `message` in a dialog box, wait till dialog is closed */
-  private def showInDialog(message: String) {
+  private def showInDialog(message: String): Unit = {
     // Create dialog
     val dialogStage = new Stage {
       outer =>
@@ -55,7 +53,7 @@ object StandAloneFXDialogRunAndWait extends App {
           padding = Insets(25)
           bottom = new Button {
             text = message
-            onAction = handle {outer.close()}
+            onAction = _ => outer.close()
           }
         }
       }

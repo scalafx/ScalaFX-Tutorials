@@ -12,7 +12,7 @@ import scalafx.scene.layout.VBox
 import scalafx.stage.{Screen, Stage, StageStyle}
 
 /**
-  */
+ */
 object Splash {
 
   private val SplashImage = "http://fxexperience.com/wp-content/uploads/2010/06/logo.png"
@@ -52,9 +52,7 @@ object Splash {
           new FadeTransition(0.5.s, splashLayout) {
             fromValue = 1.0
             toValue = 0.0
-            onFinished = handle {
-              splashStage.hide()
-            }
+            onFinished = _ => splashStage.hide()
           }.play()
 
           onSuccess()

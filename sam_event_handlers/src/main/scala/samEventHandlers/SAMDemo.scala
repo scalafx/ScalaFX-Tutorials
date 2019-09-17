@@ -15,7 +15,7 @@ object SAMDemo extends JFXApp {
         children = Seq(
           new Button {
             text = "Print message"
-            onAction = { _ => println("some message") }
+            onAction = _ => println("some message")
           }
         )
       }
