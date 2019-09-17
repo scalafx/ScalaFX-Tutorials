@@ -1,7 +1,7 @@
 package sfxml
 
 import scalafx.event.ActionEvent
-import scalafx.scene.control.{TextArea, ChoiceBox, TextField}
+import scalafx.scene.control.{ChoiceBox, TextArea, TextField}
 import scalafx.scene.layout.GridPane
 import scalafxml.core.macros.sfxml
 
@@ -12,11 +12,11 @@ class AdoptionFormPresenter(private val sizeTextField: TextField,
                             private val additionalInfoTextArea: TextArea,
                             private val grid: GridPane) {
 
-  def handleSubmit(event: ActionEvent) {
+  def handleSubmit(event: ActionEvent): Unit = {
     grid.gridLinesVisible() = !grid.gridLinesVisible()
   }
 
-  def handleClear(event: ActionEvent) {
+  def handleClear(event: ActionEvent): Unit = {
     sizeTextField.text = ""
     breedTextField.text = ""
     sexChoiceBox.selectionModel().clearSelection()

@@ -8,8 +8,8 @@ import scalafx.scene.layout.BorderPane
 import scalafx.scene.text.Font
 
 /**
-  * Created main view and connects it to the view model.
-  */
+ * Created main view and connects it to the view model.
+ */
 class ContactsView(val model: ContactsViewModel) {
 
   val title = "Address Book"
@@ -42,7 +42,7 @@ class ContactsView(val model: ContactsViewModel) {
 
     // Build the table
     new TableView[Person](model.items) {
-      columns += (firstNameColumn, lastNameColumn, emailColumn)
+      columns ++= Seq(firstNameColumn, lastNameColumn, emailColumn)
       margin = Insets(10, 0, 10, 0)
     }
   }
@@ -51,24 +51,18 @@ class ContactsView(val model: ContactsViewModel) {
 
   private val addButton = new Button {
     text = "Add"
-    onAction = handle {
-      model.onAddItem()
-    }
+    onAction = _ => model.onAddItem()
   }
 
   private val removeButton = new Button {
     text = "Remove"
     disable <== !model.canRemoveRow
-    onAction = handle {
-      model.onRemove()
-    }
+    onAction = _ => model.onRemove()
   }
 
   private val resetButton = new Button {
     text = "Reset"
-    onAction = handle {
-      model.onReset()
-    }
+    onAction = _ => model.onReset()
   }
 
   val view: Parent = {

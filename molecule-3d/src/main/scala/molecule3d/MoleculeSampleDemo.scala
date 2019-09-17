@@ -1,13 +1,13 @@
 package molecule3d
 
 import scalafx.Includes._
+import scalafx.animation.Timeline
 import scalafx.application.JFXApp
 import scalafx.scene._
-import scalafx.animation.Timeline
-import scalafx.scene.shape.{Box, Sphere, Cylinder}
-import scalafx.scene.paint.{PhongMaterial, Color}
-import scalafx.scene.transform.Rotate
 import scalafx.scene.input.{KeyCode, KeyEvent, MouseEvent}
+import scalafx.scene.paint.{Color, PhongMaterial}
+import scalafx.scene.shape.{Box, Cylinder, Sphere}
+import scalafx.scene.transform.Rotate
 
 /** ScalaFX implementation of `MoleculeSampleApp` from tutorial
   * [[http://docs.oracle.com/javafx/8/3d_graphics/jfxpub-3d_graphics.htm Getting Started with JavaFX 3D Graphics]]
@@ -57,10 +57,11 @@ object MoleculeSampleDemo extends JFXApp {app =>
   }
 
 
-  private def buildScene() {
+  private def buildScene(): Unit = {
     root.children += world
   }
-  private def buildCamera() {
+
+  private def buildCamera(): Unit = {
     root.children += cameraXform
     cameraXform.children += cameraXform2
     cameraXform2.children += cameraXform3
@@ -73,7 +74,7 @@ object MoleculeSampleDemo extends JFXApp {app =>
     cameraXform.rx.angle = 40
   }
 
-  private def buildAxes() {
+  private def buildAxes(): Unit = {
     val redMaterial = new PhongMaterial {
       diffuseColor = Color.DarkRed
       specularColor = Color.Red
@@ -99,7 +100,7 @@ object MoleculeSampleDemo extends JFXApp {app =>
     world.children += axisGroup
   }
 
-  private def buildMolecule() {
+  private def buildMolecule(): Unit = {
     val redMaterial = new PhongMaterial {
       diffuseColor = Color.DarkRed
       specularColor = Color.Red
@@ -166,7 +167,7 @@ object MoleculeSampleDemo extends JFXApp {app =>
     world.children += moleculeGroup
   }
 
-  private def handleMouse(scene: Scene, root: Node) {
+  private def handleMouse(scene: Scene, root: Node): Unit = {
     scene.onMousePressed = (me: MouseEvent) => {
       mousePosX = me.sceneX
       mousePosY = me.sceneY
@@ -196,7 +197,7 @@ object MoleculeSampleDemo extends JFXApp {app =>
     }
   }
 
-  private def handleKeyboard(scene: Scene, root: Node) {
+  private def handleKeyboard(scene: Scene, root: Node): Unit = {
     //    val moveCamera: Boolean = true
     scene.onKeyPressed = (event: KeyEvent) => {
       //      val currentTime: Duration = null
@@ -227,7 +228,7 @@ object MoleculeSampleDemo extends JFXApp {app =>
               moleculeGroup.setVisible(true)
             }
           }
-        case KeyCode.SPACE =>
+        case KeyCode.Space =>
           if (timelinePlaying) {
             timeline.pause()
             timelinePlaying = false
@@ -236,7 +237,7 @@ object MoleculeSampleDemo extends JFXApp {app =>
             timeline.play()
             timelinePlaying = true
           }
-        case KeyCode.UP =>
+        case KeyCode.Up =>
           if (event.isControlDown && event.isShiftDown) {
             cameraXform2.t.setY(cameraXform2.t.getY - 10.0 * CONTROL_MULTIPLIER)
           } else if (event.isAltDown && event.isShiftDown) {
@@ -250,7 +251,7 @@ object MoleculeSampleDemo extends JFXApp {app =>
             val newZ: Double = z + 5.0 * SHIFT_MULTIPLIER
             camera.setTranslateZ(newZ)
           }
-        case KeyCode.DOWN =>
+        case KeyCode.Down =>
           if (event.isControlDown && event.isShiftDown) {
             cameraXform2.t.setY(cameraXform2.t.getY + 10.0 * CONTROL_MULTIPLIER)
           } else if (event.isAltDown && event.isShiftDown) {
@@ -264,7 +265,7 @@ object MoleculeSampleDemo extends JFXApp {app =>
             val newZ: Double = z - 5.0 * SHIFT_MULTIPLIER
             camera.setTranslateZ(newZ)
           }
-        case KeyCode.RIGHT =>
+        case KeyCode.Right =>
           if (event.isControlDown && event.isShiftDown) {
             cameraXform2.t.setX(cameraXform2.t.getX + 10.0 * CONTROL_MULTIPLIER)
           } else if (event.isAltDown && event.isShiftDown) {
@@ -274,7 +275,7 @@ object MoleculeSampleDemo extends JFXApp {app =>
           } else if (event.isAltDown) {
             cameraXform.ry.setAngle(cameraXform.ry.getAngle - 2.0 * ALT_MULTIPLIER)
           }
-        case KeyCode.LEFT =>
+        case KeyCode.Left =>
           if (event.isControlDown && event.isShiftDown) {
             cameraXform2.t.setX(cameraXform2.t.getX - 10.0 * CONTROL_MULTIPLIER)
           } else if (event.isAltDown && event.isShiftDown) {

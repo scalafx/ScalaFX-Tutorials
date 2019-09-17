@@ -1,7 +1,7 @@
 package molecule3d
 
 import scalafx.Includes._
-import scalafx.scene.transform.{Scale, Rotate, Translate}
+import scalafx.scene.transform.{Rotate, Scale, Translate}
 
 object Xform {
   object RotateOrder {
@@ -51,13 +51,13 @@ class Xform extends javafx.scene.Group {
   
   def transforms = getTransforms
 
-  def setTranslate(x: Double, y: Double, z: Double) {
+  def setTranslate(x: Double, y: Double, z: Double): Unit = {
     t.x = x
     t.y = y
     t.z = z
   }
 
-  def setTranslate(x: Double, y: Double) {
+  def setTranslate(x: Double, y: Double): Unit = {
     t.x = x
     t.y = y
   }
@@ -67,63 +67,65 @@ class Xform extends javafx.scene.Group {
   def rz : Rotate = _rz
   def t : Translate = _t
 
-  def setRotate(x: Double, y: Double, z: Double) {
+  def setRotate(x: Double, y: Double, z: Double): Unit = {
     _rx.angle = x
     _ry.angle = y
     _rz.angle = z
   }
 
-  def setRotateX(x: Double) {
+  def setRotateX(x: Double): Unit = {
     _rx.angle = x
   }
 
   def rotateY = _ry.angle
-  def rotateY_=(y: Double) {
+
+  def rotateY_=(y: Double): Unit = {
     _ry.angle = y
   }
 
   def rotateZ:Double = _rz.angle()
-  def rotateZ_=(z: Double) {
+
+  def rotateZ_=(z: Double): Unit = {
     _rz.angle = z
   }
 
-  def setRx(x: Double) {
+  def setRx(x: Double): Unit = {
     _rx.angle = x
   }
 
-  def setRy(y: Double) {
+  def setRy(y: Double): Unit = {
     _ry.angle = y
   }
 
-  def setRz(z: Double) {
+  def setRz(z: Double): Unit = {
     _rz.angle = z
   }
 
-  def setScale(scaleFactor: Double) {
+  def setScale(scaleFactor: Double): Unit = {
     s.x = scaleFactor
     s.y = scaleFactor
     s.z = scaleFactor
   }
 
-  def setScale(x: Double, y: Double, z: Double) {
+  def setScale(x: Double, y: Double, z: Double): Unit = {
     s.x=x
     s.y=y
     s.z = z
   }
 
-  def setSx(x: Double) {
+  def setSx(x: Double): Unit = {
     s.x = x
   }
 
-  def setSy(y: Double) {
+  def setSy(y: Double): Unit = {
     s.y = y
   }
 
-  def setSz(z: Double) {
+  def setSz(z: Double): Unit = {
     s.z = z
   }
 
-  def setPivot(x: Double, y: Double, z: Double) {
+  def setPivot(x: Double, y: Double, z: Double): Unit = {
     p.x = x
     p.y = y
     p.z = z
@@ -132,7 +134,7 @@ class Xform extends javafx.scene.Group {
     ip.z = -z
   }
 
-  def reset() {
+  def reset(): Unit = {
     t.x = 0.0
     t.y = 0.0
     t.z = 0.0
@@ -150,7 +152,7 @@ class Xform extends javafx.scene.Group {
     ip.z = 0.0
   }
 
-  def resetTSP() {
+  def resetTSP(): Unit = {
     t.x = 0.0
     t.y = 0.0
     t.z = 0.0

@@ -8,7 +8,7 @@ import scalafx.geometry.{Insets, Pos}
 import scalafx.scene.control._
 import scalafx.scene.input.MouseEvent
 import scalafx.scene.layout._
-import scalafx.scene.{Scene, Group, Node}
+import scalafx.scene.{Group, Node, Scene}
 
 
 /**
@@ -137,10 +137,12 @@ object DraggablePanelsExample extends JFXApp {
     val acceptanceLabel = new Label("Not Available")
     children = Seq(
       new Button("Accept") {
-        onAction = handle {acceptanceLabel.text = "Accepted"}
+        onAction = _ => {
+          acceptanceLabel.text = "Accepted"
+        }
       },
       new Button("Decline") {
-        onAction = handle {acceptanceLabel.text = "Declined"}
+        onAction = _ => acceptanceLabel.text = "Declined"
       },
       acceptanceLabel
     )

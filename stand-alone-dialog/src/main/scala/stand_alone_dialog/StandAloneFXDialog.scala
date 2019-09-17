@@ -1,7 +1,6 @@
 package stand_alone_dialog
 
 import javafx.embed.swing.JFXPanel
-import scalafx.Includes._
 import scalafx.application.Platform
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
@@ -31,7 +30,7 @@ object StandAloneFXDialog extends App {
           padding = Insets(25)
           bottom = new Button {
             text = "Click me to close the dialog"
-            onAction = handle { outer.close() }
+            onAction = _ => outer.close()
           }
         }
       }

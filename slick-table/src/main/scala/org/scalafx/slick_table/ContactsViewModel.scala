@@ -65,7 +65,7 @@ class ContactsViewModel {
     taskRunner.run(
       caption = "Remove Selection",
       op = {
-        contactsDB.remove(selectedItems)
+        contactsDB.remove(selectedItems.toSeq)
         // Return items from database
         val updatedItems = contactsDB.queryPersons()
         // Update items on FX thread

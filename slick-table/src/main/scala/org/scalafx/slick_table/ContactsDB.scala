@@ -1,7 +1,7 @@
 package org.scalafx.slick_table
 
 import org.scalafx.slick_table.ContactsDB.Persons
-import slick.driver.H2Driver.api._
+import slick.jdbc.H2Profile.api._
 import slick.lifted.ProvenShape
 
 import scala.concurrent.Await
