@@ -2,7 +2,7 @@ name := "splash-demo"
 
 organization := "org.scalafx"
 
-version := "0.2"
+version := "0.2.1"
 
 scalaVersion := "2.13.0"
 
@@ -25,4 +25,4 @@ shellPrompt := { _ => System.getProperty("user.name") + "> " }
 
 // set the main class for the main 'run' task
 // change Compile to Test to set it for 'test:run'
-mainClass in(Compile, run) := Some("splash_demo.SplashDemo")
+mainClass in(Compile, run) := Some("splash_demo.SplashDemoApp")
