@@ -4,7 +4,7 @@ name         := "Stand-Alone Dialog"
 organization := "scalafx.org"
 version      := "1.0.8"
 
-scalaVersion := "2.13.0"
+scalaVersion := "2.13.1"
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8")
 

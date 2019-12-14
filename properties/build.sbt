@@ -4,7 +4,7 @@ name         := "Properties"
 organization := "scalafx.org"
 version      := "0.2"
 
-scalaVersion := "2.13.0"
+scalaVersion := "2.13.1"
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8")
 

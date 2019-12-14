@@ -4,7 +4,7 @@ name         := "SAM Event Handlers"
 organization := "ScalaFX.org"
 version      := "0.1.2"
 
-scalaVersion := "2.13.0"
+scalaVersion := "2.13.1"
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8")
 

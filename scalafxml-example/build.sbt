@@ -4,7 +4,7 @@ name := "ScalaFXML Example"
 organization := "scalafx.org"
 version := "1.0.6"
 
-scalaVersion := "2.13.0"
+scalaVersion := "2.13.1"
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8", "-Ymacro-annotations")
 
