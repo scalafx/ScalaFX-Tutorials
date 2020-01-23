@@ -1,5 +1,7 @@
 name := "ScalaFX Tutorials"
 
+lazy val cell_factories = project.in(file("cell_factories"))
+
 lazy val event_filters = project.in(file("event-filters"))
 
 lazy val hello_SBT = project.in(file("hello-sbt"))
