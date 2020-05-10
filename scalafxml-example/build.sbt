@@ -10,7 +10,7 @@ scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", 
 
 resourceDirectory in Compile := (scalaSource in Compile).value
 libraryDependencies ++= Seq(
-  "org.scalafx" %% "scalafx"             % "12.0.2-R18",
+  "org.scalafx" %% "scalafx"             % "14-R19",
   "org.scalafx" %% "scalafxml-core-sfx8" % "0.5"
 )
 
@@ -22,7 +22,7 @@ val osName = System.getProperty("os.name") match {
   case n if n.startsWith("Windows") => "win"
   case _ => throw new Exception("Unknown platform!")
 }
-libraryDependencies ++= javafxModules.map(m => "org.openjfx" % s"javafx-$m" % "12.0.2" classifier osName)
+libraryDependencies ++= javafxModules.map(m => "org.openjfx" % s"javafx-$m" % "14.0.1" classifier osName)
 
 
 // Fork a new JVM for 'run' and 'test:run', to avoid JavaFX double initialization problems

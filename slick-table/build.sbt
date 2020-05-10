@@ -9,10 +9,10 @@ scalaVersion := "2.13.1"
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8")
 
 libraryDependencies ++= Seq(
-  "org.scalafx"        %% "scalafx"   % "12.0.2-R18",
+  "org.scalafx"        %% "scalafx"   % "14-R19",
   "com.typesafe.slick" %% "slick"     % "3.3.2",
-  "org.slf4j"           % "slf4j-nop" % "1.7.28",
-  "com.h2database"      % "h2"        % "1.4.199"
+  "org.slf4j"           % "slf4j-nop" % "1.7.30",
+  "com.h2database"      % "h2"        % "1.4.200"
 )
 
 // Add OS specific JavaFX dependencies
@@ -23,7 +23,7 @@ val osName = System.getProperty("os.name") match {
   case n if n.startsWith("Windows") => "win"
   case _ => throw new Exception("Unknown platform!")
 }
-libraryDependencies ++= javafxModules.map(m => "org.openjfx" % s"javafx-$m" % "12.0.2" classifier osName)
+libraryDependencies ++= javafxModules.map(m => "org.openjfx" % s"javafx-$m" % "14.0.1" classifier osName)
 
 
 shellPrompt := { _ => System.getProperty("user.name") + "> " }
