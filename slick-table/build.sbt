@@ -4,12 +4,12 @@ name         := "Slick Table"
 organization := "org.scalafx"
 version      := "0.2"
 
-scalaVersion := "2.13.1"
+scalaVersion := "2.13.4"
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8")
 
 libraryDependencies ++= Seq(
-  "org.scalafx"        %% "scalafx"   % "14-R19",
+  "org.scalafx"        %% "scalafx"   % "15.0.1-R21",
   "com.typesafe.slick" %% "slick"     % "3.3.2",
   "org.slf4j"           % "slf4j-nop" % "1.7.30",
   "com.h2database"      % "h2"        % "1.4.200"
@@ -23,10 +23,7 @@ val osName = System.getProperty("os.name") match {
   case n if n.startsWith("Windows") => "win"
   case _ => throw new Exception("Unknown platform!")
 }
-libraryDependencies ++= javafxModules.map(m => "org.openjfx" % s"javafx-$m" % "14.0.1" classifier osName)
-
-
-shellPrompt := { _ => System.getProperty("user.name") + "> " }
+libraryDependencies ++= javafxModules.map(m => "org.openjfx" % s"javafx-$m" % "15.0.1" classifier osName)
 
 // set the main class for the main 'run' task
 // change Compile to Test to set it for 'test:run'
