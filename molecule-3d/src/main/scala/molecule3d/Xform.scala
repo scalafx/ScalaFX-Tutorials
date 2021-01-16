@@ -34,7 +34,7 @@ class Xform extends javafx.scene.Group {
 
   transforms ++= Seq(t, _rz, _ry, _rx, s)
 
-  def this(rotateOrder: Xform.RotateOrder) {
+  def this(rotateOrder: Xform.RotateOrder) = {
     this()
     import Xform.RotateOrder._
     rotateOrder match {
