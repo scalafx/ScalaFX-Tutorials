@@ -1,9 +1,14 @@
 package molecule3d
 
+import javafx.scene.{transform => jfxst}
+import javafx.{scene => jfxs}
 import scalafx.Includes._
+import scalafx.beans.property.DoubleProperty
+import scalafx.collections.ObservableBuffer
 import scalafx.scene.transform.{Rotate, Scale, Translate}
 
 object Xform {
+
   object RotateOrder {
     final val XYZ = RotateOrder("XYZ")
     final val XZY = RotateOrder("XZY")
@@ -47,9 +52,9 @@ class Xform extends javafx.scene.Group {
     }
   }
 
-  def children = getChildren
-  
-  def transforms = getTransforms
+  def children: ObservableBuffer[jfxs.Node] = getChildren
+
+  def transforms: ObservableBuffer[jfxst.Transform] = getTransforms
 
   def setTranslate(x: Double, y: Double, z: Double): Unit = {
     t.x = x
@@ -77,7 +82,7 @@ class Xform extends javafx.scene.Group {
     _rx.angle = x
   }
 
-  def rotateY = _ry.angle
+  def rotateY: DoubleProperty = _ry.angle
 
   def rotateY_=(y: Double): Unit = {
     _ry.angle = y
