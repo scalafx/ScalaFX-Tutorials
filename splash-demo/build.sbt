@@ -22,4 +22,4 @@ libraryDependencies ++= javafxModules.map(m => "org.openjfx" % s"javafx-$m" % "1
 
 // set the main class for the main 'run' task
 // change Compile to Test to set it for 'test:run'
-mainClass in(Compile, run) := Some("splash_demo.SplashDemoApp")
+Compile / run /mainClass := Some("splash_demo.SplashDemoApp")
