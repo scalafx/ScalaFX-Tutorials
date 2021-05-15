@@ -4,7 +4,7 @@ name         := "Molecule 3D"
 organization := "scalafx.org"
 version      := "0.2.5"
 
-scalaVersion := "2.13.4"
+scalaVersion := "2.13.5"
 
 resolvers += Resolver.sonatypeRepo("snapshots")
 
