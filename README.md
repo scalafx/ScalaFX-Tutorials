@@ -1,12 +1,16 @@
 ScalaFX-Tutorials
 =================
 
+[![Scala CI](https://github.com/scalafx/ScalaFX-Tutorials/actions/workflows/scala.yml/badge.svg)](https://github.com/scalafx/ScalaFX-Tutorials/actions/workflows/scala.yml)
+
 Examples of using ScalaFX. Each example is a stand-alone complete project
 
 * [__hello-sbt__](hello-sbt): 
    a basic example of using [Simple-Build-Tool](http://www.scala-sbt.org/) (SBT) and
    [ScalaFX](http://scalafx.org). Detailed description can be found in the blog post
    ["Getting Started with ScalaFX: Compile and Run"](http://codingonthestaircase.wordpress.com/2013/05/17/getting-started-with-scalafx-compile-and-run-2/).
+  
+* [__cell_factories__](cell_factories) - examples of using cell factories, including custom cell factories.
 
 * [__event-filters__](event-filters):
    demonstrates use of ScalaFX Event Filter API. The code is based on JavaFX example
