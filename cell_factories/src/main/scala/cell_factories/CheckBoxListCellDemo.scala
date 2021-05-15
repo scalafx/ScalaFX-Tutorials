@@ -20,7 +20,7 @@ object CheckBoxListCellDemo extends JFXApp {
     override def toString: String = name
   }
 
-  private val data = ObservableBuffer[Item](
+  private val data = ObservableBuffer.from(
     (1 to 10).map { i => new Item(i % 2 == 0, s"Item $i") }
   )
 
