@@ -4,13 +4,12 @@ import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.beans.property.StringProperty
 import scalafx.collections.ObservableBuffer
-import scalafx.scene.Scene
 import scalafx.scene.control.TableColumn._
-import scalafx.scene.control.cell.TextFieldTableCell
 import scalafx.scene.control.{TableCell, TableColumn, TableView}
 import scalafx.scene.layout.{HBox, VBox}
 import scalafx.scene.paint.Color
 import scalafx.scene.text.Text
+import scalafx.scene.{Node, Scene}
 
 /**
  * Example for StackOverflow question "How to color each character differently in a TableView TableCell"
@@ -19,72 +18,63 @@ import scalafx.scene.text.Text
 object ColorCharactersInTableView2 extends JFXApp {
 
   class Person(firstName_ : String, lastName_ : String) {
-
     val firstName = new StringProperty(this, "firstName", firstName_)
     val lastName = new StringProperty(this, "lastName", lastName_)
-
-    override def toString: String = firstName() + " " + lastName()
   }
 
   private val characters = ObservableBuffer[Person](
     new Person("Peggy", "Sue"),
     new Person("Rocky", "Raccoon"),
-    new Person("Bungalow Bill", "Bill")
+    new Person("Bill", "Bungalow")
   )
 
-  private val tc = new TableColumn[Person, String] {
-    text = "First Name"
-    cellValueFactory = {
-      _.value.firstName
-    }
-
-    cellFactory = { _: TableColumn[Person, String] =>
-      new TableCell[Person, String] {
-        item.onChange { (_, _, newValue) =>
-          Option(newValue) match {
-            case Some(value) =>
-              val texts = value.iterator.map { c =>
-                val color: Color = c.toLower match {
-                  case 'r' => Color.Red
-                  case 'g' => Color.Green
-                  case 'b' => Color.Blue
-                  case _ => Color.Black
-                }
-                new Text {
-                  text = c.toString
-                  fill = color
-                }
-              }.toSeq
-              graphic = new HBox(texts: _*)
-            case None =>
-              text = null
-              graphic = null
-          }
-        }
+  /** Render string as colored text */
+  def createColorText(name: String): Node = {
+    val texts = name.map { char =>
+      val color = char.toLower match {
+        case 'r' => Color.Red
+        case 'g' => Color.Green
+        case 'b' => Color.Blue
+        case _ => Color.Black
+      }
+      new Text {
+        text = char.toString
+        fill = color
       }
     }
+    new HBox(texts: _*)
+  }
 
+  private val firstNameColumn = new TableColumn[Person, String] {
+    text = "First Name"
+    cellValueFactory = _.value.firstName
+    cellFactory = (_: TableColumn[Person, String]) =>
+      new TableCell[Person, String] {
+        item.onChange { (_, _, newValue) =>
+          // Create custom representation of a name as colored text.
+          // Keep in mind that JavaFX also asks to render empty cells providing cell values as `null`
+          // To keep empty cells empty we set graphics to `null`
+          graphic = Option(newValue).map(createColorText).orNull
+        }
+      }
+    prefWidth = 180
+  }
+
+  private val lastNameColumn = new TableColumn[Person, String]() {
+    text = "Last Name"
+    cellValueFactory = _.value.lastName
+    // TableColumn renders cell values as String by default, so we do not need call factory here
     prefWidth = 180
   }
 
 
   stage = new PrimaryStage {
-    title = "Editable Table View"
+    title = "Table View with Color Text - ScalaFX way"
     scene = new Scene {
       root = new VBox {
         children = Seq(
           new TableView[Person](characters) {
-            columns ++= Seq(
-              tc,
-              new TableColumn[Person, String]() {
-                text = "Last Name"
-                cellValueFactory = {
-                  _.value.lastName
-                }
-                cellFactory = TextFieldTableCell.forTableColumn[Person]()
-                prefWidth = 180
-              }
-            )
+            columns ++= Seq(firstNameColumn, lastNameColumn)
           }
         )
       }
