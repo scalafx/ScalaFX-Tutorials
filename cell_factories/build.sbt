@@ -4,12 +4,12 @@ name         := "Cell Factories"
 organization := "scalafx.org"
 version      := "1.0.0"
 
-scalaVersion := "2.13.5"
+scalaVersion := "2.13.6"
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8")
 
 // Add dependency on ScalaFX library
-libraryDependencies += "org.scalafx" %% "scalafx" % "16.0.0-R22"
+libraryDependencies += "org.scalafx" %% "scalafx" % "16.0.0-R24"
 
 // Add OS specific JavaFX dependencies
 val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")

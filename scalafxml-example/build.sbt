@@ -4,13 +4,13 @@ name := "ScalaFXML Example"
 organization := "scalafx.org"
 version := "1.0.6"
 
-scalaVersion := "2.13.5"
+scalaVersion := "2.13.6"
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8", "-Ymacro-annotations")
 
 resourceDirectory in Compile := (scalaSource in Compile).value
 libraryDependencies ++= Seq(
-  "org.scalafx" %% "scalafx"             % "16.0.0-R22",
+  "org.scalafx" %% "scalafx"             % "16.0.0-R24",
   "org.scalafx" %% "scalafxml-core-sfx8" % "0.5"
 )
 

@@ -19,3 +19,5 @@ lazy val slick_table = project.in(file("slick-table"))
 lazy val splash_demo = project.in(file("splash-demo"))
 
 lazy val stand_alone_dialog = project.in(file("stand-alone-dialog"))
+
+lazy val spreadsheetview = project.in(file("spreadsheetview"))

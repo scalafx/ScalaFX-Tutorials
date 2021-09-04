@@ -4,13 +4,13 @@ name         := "Molecule 3D"
 organization := "scalafx.org"
 version      := "0.2.5"
 
-scalaVersion := "2.13.5"
+scalaVersion := "2.13.6"
 
 resolvers += Resolver.sonatypeRepo("snapshots")
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8")
 
-libraryDependencies += "org.scalafx" %% "scalafx" % "16.0.0-R22"
+libraryDependencies += "org.scalafx" %% "scalafx" % "16.0.0-R24"
 
 // Add OS specific JavaFX dependencies
 val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
