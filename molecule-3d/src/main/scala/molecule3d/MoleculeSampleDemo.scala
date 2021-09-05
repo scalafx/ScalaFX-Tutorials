@@ -2,60 +2,63 @@ package molecule3d
 
 import scalafx.Includes._
 import scalafx.animation.Timeline
-import scalafx.application.JFXApp
+import scalafx.application.JFXApp3
 import scalafx.scene._
-import scalafx.scene.input.{KeyCode, KeyEvent, MouseEvent}
+import scalafx.scene.input.{KeyCode, KeyEvent}
 import scalafx.scene.paint.{Color, PhongMaterial}
 import scalafx.scene.shape.{Box, Cylinder, Sphere}
 import scalafx.scene.transform.Rotate
 
-/** ScalaFX implementation of `MoleculeSampleApp` from tutorial
-  * [[http://docs.oracle.com/javafx/8/3d_graphics/jfxpub-3d_graphics.htm Getting Started with JavaFX 3D Graphics]]
-  * by Cindy Castillo and John Yoon.
-  *
-  * @author Jarek Sacha
-  */
-object MoleculeSampleDemo extends JFXApp {app =>
+/**
+ * ScalaFX implementation of `MoleculeSampleApp` from tutorial
+ * [[http://docs.oracle.com/javafx/8/3d_graphics/jfxpub-3d_graphics.htm Getting Started with JavaFX 3D Graphics]]
+ * by Cindy Castillo and John Yoon.
+ *
+ * @author Jarek Sacha
+ */
+object MoleculeSampleDemo extends JFXApp3 {
+  app =>
   System.setProperty("prism.dirtyopts", "false")
 
-  private final val root = new Group()
-  private final val axisGroup = new Group()
-  private final val world = new Xform()
-  private final val camera: PerspectiveCamera = new PerspectiveCamera(true)
-  private final val cameraXform = new Xform()
-  private final val cameraXform2 = new Xform()
-  private final val cameraXform3 = new Xform()
-  private final val cameraDistance: Double = 450
-  private final val moleculeGroup = new Xform()
-  private val timeline: Timeline = null
-  private var timelinePlaying = false
-  private var ONE_FRAME: Double = 1.0 / 24.0
-  private var DELTA_MULTIPLIER: Double = 200.0
-  private val CONTROL_MULTIPLIER: Double = 0.1
-  private val SHIFT_MULTIPLIER: Double = 0.1
-  private val ALT_MULTIPLIER: Double = 0.5
-  private var mousePosX: Double = .0
-  private var mousePosY: Double = .0
-  private var mouseOldX: Double = .0
-  private var mouseOldY: Double = .0
-  private var mouseDeltaX: Double = .0
-  private var mouseDeltaY: Double = .0
+  private final val root                                  = new Group()
+  private final val axisGroup                             = new Group()
+  private final val world                                 = new Xform()
+  private final val camera            : PerspectiveCamera = new PerspectiveCamera(true)
+  private final val cameraXform                           = new Xform()
+  private final val cameraXform2                          = new Xform()
+  private final val cameraXform3                          = new Xform()
+  private final val cameraDistance    : Double            = 450
+  private final val moleculeGroup                         = new Xform()
+  private       val timeline          : Timeline          = null
+  private var timelinePlaying                             = false
+  private var ONE_FRAME               : Double            = 1.0 / 24.0
+  private var DELTA_MULTIPLIER        : Double            = 200.0
+  private       val CONTROL_MULTIPLIER: Double            = 0.1
+  private       val SHIFT_MULTIPLIER  : Double            = 0.1
+  private       val ALT_MULTIPLIER    : Double            = 0.5
+  private var mousePosX               : Double            = .0
+  private var mousePosY               : Double            = .0
+  private var mouseOldX               : Double            = .0
+  private var mouseOldY               : Double            = .0
+  private var mouseDeltaX             : Double            = .0
+  private var mouseDeltaY             : Double            = .0
 
-  buildScene()
-  buildCamera()
-  buildAxes()
-  buildMolecule()
+  override def start(): Unit = {
+    buildScene()
+    buildCamera()
+    buildAxes()
+    buildMolecule()
 
-  stage = new JFXApp.PrimaryStage {
-    scene = new Scene(root, 1024, 768, depthBuffer = true, antiAliasing = SceneAntialiasing.Balanced) {
-      fill = Color.Gray
-      title = "Molecule Sample Application"
-      camera = app.camera
+    stage = new JFXApp3.PrimaryStage {
+      scene = new Scene(root, 1024, 768, depthBuffer = true, antiAliasing = SceneAntialiasing.Balanced) {
+        fill = Color.Gray
+        title = "Molecule Sample Application"
+        camera = app.camera
+      }
+      handleKeyboard(scene(), world)
+      handleMouse(scene(), world)
     }
-    handleKeyboard(scene(), world)
-    handleMouse(scene(), world)
   }
-
 
   private def buildScene(): Unit = {
     root.children += world
@@ -168,26 +171,26 @@ object MoleculeSampleDemo extends JFXApp {app =>
   }
 
   private def handleMouse(scene: Scene, root: Node): Unit = {
-    scene.onMousePressed = (me: MouseEvent) => {
+    scene.onMousePressed = (me) => {
       mousePosX = me.sceneX
       mousePosY = me.sceneY
       mouseOldX = me.sceneX
       mouseOldY = me.sceneY
     }
-    scene.onMouseDragged = (me: MouseEvent) => {
+    scene.onMouseDragged = (me) => {
       mouseOldX = mousePosX
       mouseOldY = mousePosY
       mousePosX = me.sceneX
       mousePosY = me.sceneY
       mouseDeltaX = mousePosX - mouseOldX
       mouseDeltaY = mousePosY - mouseOldY
-      val modifier = if (me.isControlDown) 0.1 else if (me.isShiftDown) 10 else 1.0
+      val modifier       = if (me.isControlDown) 0.1 else if (me.isShiftDown) 10 else 1.0
       val modifierFactor = 0.1
       if (me.isPrimaryButtonDown) {
         cameraXform.ry.angle = cameraXform.ry.angle() - mouseDeltaX * modifierFactor * modifier * 2.0
         cameraXform.rx.angle = cameraXform.rx.angle() + mouseDeltaY * modifierFactor * modifier * 2.0
       } else if (me.isSecondaryButtonDown) {
-        val z = camera.translateZ()
+        val z    = camera.translateZ()
         val newZ = z + mouseDeltaX * modifierFactor * modifier
         camera.translateZ = newZ
       } else if (me.isMiddleButtonDown) {
@@ -214,8 +217,7 @@ object MoleculeSampleDemo extends JFXApp {app =>
           if (event.isControlDown) {
             if (axisGroup.isVisible) {
               axisGroup.setVisible(false)
-            }
-            else {
+            } else {
               axisGroup.setVisible(true)
             }
           }
@@ -223,8 +225,7 @@ object MoleculeSampleDemo extends JFXApp {app =>
           if (event.isControlDown) {
             if (moleculeGroup.isVisible) {
               moleculeGroup.setVisible(false)
-            }
-            else {
+            } else {
               moleculeGroup.setVisible(true)
             }
           }
@@ -232,8 +233,7 @@ object MoleculeSampleDemo extends JFXApp {app =>
           if (timelinePlaying) {
             timeline.pause()
             timelinePlaying = false
-          }
-          else {
+          } else {
             timeline.play()
             timelinePlaying = true
           }
@@ -247,7 +247,7 @@ object MoleculeSampleDemo extends JFXApp {app =>
           } else if (event.isAltDown) {
             cameraXform.rx.setAngle(cameraXform.rx.getAngle - 2.0 * ALT_MULTIPLIER)
           } else if (event.isShiftDown) {
-            val z: Double = camera.getTranslateZ
+            val z   : Double = camera.getTranslateZ
             val newZ: Double = z + 5.0 * SHIFT_MULTIPLIER
             camera.setTranslateZ(newZ)
           }
@@ -261,7 +261,7 @@ object MoleculeSampleDemo extends JFXApp {app =>
           } else if (event.isAltDown) {
             cameraXform.rx.setAngle(cameraXform.rx.getAngle + 2.0 * ALT_MULTIPLIER)
           } else if (event.isShiftDown) {
-            val z: Double = camera.getTranslateZ
+            val z   : Double = camera.getTranslateZ
             val newZ: Double = z - 5.0 * SHIFT_MULTIPLIER
             camera.setTranslateZ(newZ)
           }

@@ -1,7 +1,7 @@
 package event_filters
 
 import scalafx.Includes._
-import scalafx.application.JFXApp
+import scalafx.application.JFXApp3
 import scalafx.beans.property.BooleanProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.geometry.{Insets, Pos}
@@ -10,52 +10,53 @@ import scalafx.scene.input.MouseEvent
 import scalafx.scene.layout._
 import scalafx.scene.{Group, Node, Scene}
 
-
 /**
  * Example of using mouse event filters.
  * Most important part is in `makeDraggable(Node)` method.
  *
  * Based on example from JavaFX tutorial [[http://docs.oracle.com/javafx/2/events/filters.htm Handling JavaFX Events]].
  */
-object DraggablePanelsExample2 extends JFXApp {
+object DraggablePanelsExample2 extends JFXApp3 {
 
   // TODO use Subscription to add/remove event filter
 
   private val dragModeActiveProperty = new BooleanProperty(this, "dragModeActive", true)
-  private val borderStyle = "" +
+  private val borderStyle            = "" +
     "-fx-background-color: white;" +
     "-fx-border-color: black;" +
     "-fx-border-width: 1;" +
     "-fx-border-radius: 6;" +
     "-fx-padding: 6;"
 
-  stage = new JFXApp.PrimaryStage() {
+  override def start(): Unit = {
+    stage = new JFXApp3.PrimaryStage() {
 
-    val panelsPane = new Pane() {
-      val loginPanel = makeDraggable(createLoginPanel())
-      val confirmationPanel = makeDraggable(createConfirmationPanel())
-      val progressPanel = makeDraggable(createProgressPanel())
+      val panelsPane = new Pane() {
+        val loginPanel        = makeDraggable(createLoginPanel())
+        val confirmationPanel = makeDraggable(createConfirmationPanel())
+        val progressPanel     = makeDraggable(createProgressPanel())
 
-      loginPanel.relocate(0, 0)
-      confirmationPanel.relocate(0, 67)
-      progressPanel.relocate(0, 106)
+        loginPanel.relocate(0, 0)
+        confirmationPanel.relocate(0, 67)
+        progressPanel.relocate(0, 106)
 
-      children = Seq(loginPanel, confirmationPanel, progressPanel)
-      alignmentInParent = Pos.TopLeft
-    }
+        children = Seq(loginPanel, confirmationPanel, progressPanel)
+        alignmentInParent = Pos.TopLeft
+      }
 
-    val dragModeCheckbox = new CheckBox("Drag mode") {
-      margin = Insets(6)
-      selected = dragModeActiveProperty()
-    }
+      val dragModeCheckbox = new CheckBox("Drag mode") {
+        margin = Insets(6)
+        selected = dragModeActiveProperty()
+      }
 
-    dragModeActiveProperty <== dragModeCheckbox.selected
+      dragModeActiveProperty <== dragModeCheckbox.selected
 
-    title = "Draggable Panels Example"
-    scene = new Scene(400, 300) {
-      root = new BorderPane() {
-        center = panelsPane
-        bottom = dragModeCheckbox
+      title = "Draggable Panels Example"
+      scene = new Scene(400, 300) {
+        root = new BorderPane() {
+          center = panelsPane
+          bottom = dragModeCheckbox
+        }
       }
     }
   }
@@ -100,8 +101,11 @@ object DraggablePanelsExample2 extends JFXApp {
 
     val choiceBox = new ChoiceBox[String](
       ObservableBuffer(
-        "English", "\u0420\u0443\u0441\u0441\u043a\u0438\u0439",
-        "Fran\u00E7ais")) {
+        "English",
+        "\u0420\u0443\u0441\u0441\u043a\u0438\u0439",
+        "Fran\u00E7ais"
+        )
+      ) {
       tooltip = Tooltip("Your language")
       selectionModel().select(0)
     }
@@ -162,8 +166,8 @@ object DraggablePanelsExample2 extends JFXApp {
   }
 
   private final class DragContext {
-    var mouseAnchorX: Double = 0d
-    var mouseAnchorY: Double = 0d
+    var mouseAnchorX     : Double = 0d
+    var mouseAnchorY     : Double = 0d
     var initialTranslateX: Double = 0d
     var initialTranslateY: Double = 0d
   }

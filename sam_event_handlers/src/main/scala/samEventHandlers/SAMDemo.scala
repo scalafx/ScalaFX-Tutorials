@@ -1,23 +1,24 @@
 package samEventHandlers
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
 import scalafx.scene.Scene
 import scalafx.scene.control.Button
 import scalafx.scene.layout.HBox
 
-object SAMDemo extends JFXApp {
+object SAMDemo extends JFXApp3 {
 
-  stage = new PrimaryStage {
-    title = "SAM Demo"
-    scene = new Scene {
-      root = new HBox {
-        children = Seq(
-          new Button {
-            text = "Print message"
-            onAction = _ => println("some message")
-          }
-        )
+  override def start(): Unit = {
+    stage = new JFXApp3.PrimaryStage {
+      title = "SAM Demo"
+      scene = new Scene {
+        root = new HBox {
+          children = Seq(
+            new Button {
+              text = "Print message"
+              onAction = _ => println("some message")
+            }
+            )
+        }
       }
     }
   }

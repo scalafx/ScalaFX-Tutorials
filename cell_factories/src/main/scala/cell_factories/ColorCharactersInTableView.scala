@@ -2,8 +2,7 @@ package cell_factories
 
 import javafx.scene.{control => jfxsc}
 import javafx.{util => jfxu}
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
 import scalafx.beans.property.StringProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.control.TableColumn._
@@ -17,11 +16,11 @@ import scalafx.scene.{Node, Scene}
  * Example for StackOverflow question "How to color each character differently in a TableView TableCell"
  * [[https://stackoverflow.com/questions/41752376/how-to-color-each-character-differently-in-a-tableview-tablecell]]
  */
-object ColorCharactersInTableView extends JFXApp {
+object ColorCharactersInTableView extends JFXApp3 {
 
   class Person(firstName_ : String, lastName_ : String) {
     val firstName = new StringProperty(this, "firstName", firstName_)
-    val lastName = new StringProperty(this, "lastName", lastName_)
+    val lastName  = new StringProperty(this, "lastName", lastName_)
   }
 
   private val characters = ObservableBuffer[Person](
@@ -73,16 +72,17 @@ object ColorCharactersInTableView extends JFXApp {
     prefWidth = 180
   }
 
-
-  stage = new PrimaryStage {
-    title = "Table View with Color Text - JavaFX way"
-    scene = new Scene {
-      root = new VBox {
-        children = Seq(
-          new TableView[Person](characters) {
-            columns ++= Seq(firstNameColumn, lastNameColumn)
-          }
-        )
+  override def start(): Unit = {
+    stage = new JFXApp3.PrimaryStage {
+      title = "Table View with Color Text - JavaFX way"
+      scene = new Scene {
+        root = new VBox {
+          children = Seq(
+            new TableView[Person](characters) {
+              columns ++= Seq(firstNameColumn, lastNameColumn)
+            }
+            )
+        }
       }
     }
   }

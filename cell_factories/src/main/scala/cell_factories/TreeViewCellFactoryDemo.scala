@@ -27,14 +27,13 @@
 
 package cell_factories
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.Scene
 import scalafx.scene.control._
 
 /** Illustrates use of TreeView CellFactory to do custom rendering of a TreeCell. */
-object TreeViewCellFactoryDemo extends JFXApp {
+object TreeViewCellFactoryDemo extends JFXApp3 {
 
   trait PersonNode
 
@@ -42,64 +41,66 @@ object TreeViewCellFactoryDemo extends JFXApp {
 
   case class Person(firstName: String, lastName: String) extends PersonNode
 
-  val characters = ObservableBuffer[Person](
-    Person("Bungalow", "Bill"),
-    Person("Maxwell", "Edison"),
-    Person("Desmond", "Jones"),
-    Person("Molly", "Jones"),
-    Person("Dennis", "O’Dell"),
-    Person("Eleanor", "Rigby"),
-    Person("Rocky", "Raccoon"),
-    Person("Peggy", "Sue")
-  )
+  override def start(): Unit = {
 
-  val groups = characters.groupBy(_.lastName.head).toSeq.sortBy(_._1)
+    val characters = ObservableBuffer[Person](
+      Person("Bungalow", "Bill"),
+      Person("Maxwell", "Edison"),
+      Person("Desmond", "Jones"),
+      Person("Molly", "Jones"),
+      Person("Dennis", "O’Dell"),
+      Person("Eleanor", "Rigby"),
+      Person("Rocky", "Raccoon"),
+      Person("Peggy", "Sue")
+      )
 
-  val rootItem = new TreeItem[PersonNode]()
-  groups.foreach { case (initial, members) =>
-    val branch = new TreeItem[PersonNode](Branch(initial.toString))
-    members.foreach { p => branch.children += new TreeItem[PersonNode](p) }
-    rootItem.children += branch
-  }
+    val groups = characters.groupBy(_.lastName.head).toSeq.sortBy(_._1)
 
+    val rootItem = new TreeItem[PersonNode]()
+    groups.foreach { case (initial, members) =>
+      val branch = new TreeItem[PersonNode](Branch(initial.toString))
+      members.foreach { p => branch.children += new TreeItem[PersonNode](p) }
+      rootItem.children += branch
+    }
 
-  stage = new PrimaryStage {
-    title = "TreeView CellFactory Demo"
-    scene = new Scene {
-      root = new TreeView[PersonNode] {
-        prefWidth = 200
-        prefHeight = 150
-        showRoot = false
-        root = rootItem
-        //        // Use CellFactory to do custom rendering of a TreeCell,
-        //        // deriving from JavaFX `TreeCell` let us use custom `updateItem`.
-        //        cellFactory = _ =>
-        //          new javafx.scene.control.TreeCell[PersonNode] {
-        //
-        //            // We are deriving from JavaFX, for easier use add ScalaFX wrapper for  `this`
-        //            val self: TreeCell[PersonNode] = this
-        //
-        //            override def updateItem(item: PersonNode, empty: Boolean): Unit = {
-        //              super.updateItem(item, empty)
-        //              self.graphic = null
-        //              self.text =
-        //                if (empty) null
-        //                else item match {
-        //                  case p: Person => p.firstName + " " + p.lastName
-        //                  case b: Branch => b.label
-        //                  case _ => "???"
-        //                }
-        //            }
-        //          }
-        cellFactory = { _ =>
-          new TreeCell[PersonNode] {
-            item.onChange { (_, _, newValue) =>
-              graphic = null
-              text = newValue match {
-                case p: Person => p.firstName + " " + p.lastName
-                case b: Branch => b.label
-                case null => null
-                case _ => "???"
+    stage = new JFXApp3.PrimaryStage {
+      title = "TreeView CellFactory Demo"
+      scene = new Scene {
+        root = new TreeView[PersonNode] {
+          prefWidth = 200
+          prefHeight = 150
+          showRoot = false
+          root = rootItem
+          //        // Use CellFactory to do custom rendering of a TreeCell,
+          //        // deriving from JavaFX `TreeCell` let us use custom `updateItem`.
+          //        cellFactory = _ =>
+          //          new javafx.scene.control.TreeCell[PersonNode] {
+          //
+          //            // We are deriving from JavaFX, for easier use add ScalaFX wrapper for  `this`
+          //            val self: TreeCell[PersonNode] = this
+          //
+          //            override def updateItem(item: PersonNode, empty: Boolean): Unit = {
+          //              super.updateItem(item, empty)
+          //              self.graphic = null
+          //              self.text =
+          //                if (empty) null
+          //                else item match {
+          //                  case p: Person => p.firstName + " " + p.lastName
+          //                  case b: Branch => b.label
+          //                  case _ => "???"
+          //                }
+          //            }
+          //          }
+          cellFactory = { _ =>
+            new TreeCell[PersonNode] {
+              item.onChange { (_, _, newValue) =>
+                graphic = null
+                text = newValue match {
+                  case p: Person => p.firstName + " " + p.lastName
+                  case b: Branch => b.label
+                  case null => null
+                  case _ => "???"
+                }
               }
             }
           }
