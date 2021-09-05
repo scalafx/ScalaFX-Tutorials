@@ -32,7 +32,7 @@ object CheckBoxListCellDemo extends JFXApp3 {
             new ListView[Item] {
               prefHeight = 250
               items = data
-              cellFactory = CheckBoxListCell.forListView(_.selected)
+              cellFactory = CheckBoxListCell.forListView[Item](_.selected)
             },
             new Button("Print State ") {
               onAction = () => {

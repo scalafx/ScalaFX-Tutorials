@@ -4,7 +4,7 @@ import scalafx.application.JFXApp3
 import scalafx.beans.property.StringProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.control.TableColumn._
-import scalafx.scene.control.{TableCell, TableColumn, TableView}
+import scalafx.scene.control.{TableColumn, TableView}
 import scalafx.scene.layout.{HBox, VBox}
 import scalafx.scene.paint.Color
 import scalafx.scene.text.Text
@@ -47,15 +47,9 @@ object ColorCharactersInTableView2 extends JFXApp3 {
   private val firstNameColumn = new TableColumn[Person, String] {
     text = "First Name"
     cellValueFactory = _.value.firstName
-    cellFactory = (_: TableColumn[Person, String]) =>
-      new TableCell[Person, String] {
-        item.onChange { (_, _, newValue) =>
-          // Create custom representation of a name as colored text.
-          // Keep in mind that JavaFX also asks to render empty cells providing cell values as `null`
-          // To keep empty cells empty we set graphics to `null`
-          graphic = Option(newValue).map(createColorText).orNull
-        }
-      }
+    cellFactory = (cell, value) => {
+      cell.graphic = createColorText(value)
+    }
     prefWidth = 180
   }
 

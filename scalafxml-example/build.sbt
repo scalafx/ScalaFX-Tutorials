@@ -10,7 +10,7 @@ scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", 
 
 resourceDirectory in Compile := (scalaSource in Compile).value
 libraryDependencies ++= Seq(
-  "org.scalafx" %% "scalafx"             % "16.0.0-R24",
+  "org.scalafx" %% "scalafx"             % "16.0.0-R25-SNAPSHOT",
   "org.scalafx" %% "scalafxml-core-sfx8" % "0.5"
 )
 
@@ -24,6 +24,7 @@ val osName = System.getProperty("os.name") match {
 }
 libraryDependencies ++= javafxModules.map(m => "org.openjfx" % s"javafx-$m" % "16" classifier osName)
 
+resolvers += Opts.resolver.sonatypeSnapshots
 
 // Fork a new JVM for 'run' and 'test:run', to avoid JavaFX double initialization problems
 fork := true

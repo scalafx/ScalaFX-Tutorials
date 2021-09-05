@@ -9,7 +9,7 @@ scalaVersion := "2.13.6"
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8")
 
 libraryDependencies ++= Seq(
-  "org.scalafx"        %% "scalafx"   % "16.0.0-R24",
+  "org.scalafx"        %% "scalafx"   % "16.0.0-R25-SNAPSHOT",
   "com.typesafe.slick" %% "slick"     % "3.3.3",
   "org.slf4j"           % "slf4j-nop" % "1.7.32",
   "com.h2database"      % "h2"        % "1.4.200"
@@ -24,6 +24,8 @@ val osName = System.getProperty("os.name") match {
   case _ => throw new Exception("Unknown platform!")
 }
 libraryDependencies ++= javafxModules.map(m => "org.openjfx" % s"javafx-$m" % "16" classifier osName)
+
+resolvers += Opts.resolver.sonatypeSnapshots
 
 // set the main class for the main 'run' task
 // change Compile to Test to set it for 'test:run'

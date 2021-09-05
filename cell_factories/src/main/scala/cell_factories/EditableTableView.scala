@@ -27,38 +27,41 @@ object EditableTableView extends JFXApp3 {
     override def toString: String = firstName() + " " + lastName()
   }
 
+  private val characters = ObservableBuffer[Person](
+    new Person("Peggy", "Sue"),
+    new Person("Rocky", "Raccoon")
+    )
+
   override def start(): Unit = {
-    val characters = ObservableBuffer[Person](
-      new Person("Peggy", "Sue"),
-      new Person("Rocky", "Raccoon")
-      )
+
+    val tableView = new TableView[Person](characters) {
+      editable = true
+      columns ++= List(
+        new TableColumn[Person, String] {
+          text = "First Name"
+          cellValueFactory = {
+            _.value.firstName
+          }
+          cellFactory = TextFieldTableCell.forTableColumn[Person]()
+          prefWidth = 180
+        },
+        new TableColumn[Person, String]() {
+          text = "Last Name"
+          cellValueFactory = {
+            _.value.lastName
+          }
+          cellFactory = TextFieldTableCell.forTableColumn[Person]()
+          prefWidth = 180
+        }
+        )
+    }
 
     stage = new JFXApp3.PrimaryStage {
       title = "Editable Table View"
       scene = new Scene {
         root = new VBox {
           children = Seq(
-            new TableView[Person](characters) {
-              editable = true
-              columns ++= List(
-                new TableColumn[Person, String] {
-                  text = "First Name"
-                  cellValueFactory = {
-                    _.value.firstName
-                  }
-                  cellFactory = TextFieldTableCell.forTableColumn[Person]()
-                  prefWidth = 180
-                },
-                new TableColumn[Person, String]() {
-                  text = "Last Name"
-                  cellValueFactory = {
-                    _.value.lastName
-                  }
-                  cellFactory = TextFieldTableCell.forTableColumn[Person]()
-                  prefWidth = 180
-                }
-                )
-            },
+            tableView,
             new Button {
               text = "Print content"
               onAction = () => {
