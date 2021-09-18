@@ -9,7 +9,7 @@ scalaVersion := "2.13.6"
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8")
 
 libraryDependencies ++= Seq(
-  "org.scalafx"        %% "scalafx"   % "16.0.0-R25-SNAPSHOT",
+  "org.scalafx"        %% "scalafx"   % "16.0.0-R25",
   "com.typesafe.slick" %% "slick"     % "3.3.3",
   "org.slf4j"           % "slf4j-nop" % "1.7.32",
   "com.h2database"      % "h2"        % "1.4.200"

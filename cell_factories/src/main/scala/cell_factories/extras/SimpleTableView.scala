@@ -32,7 +32,6 @@ import scalafx.beans.property.StringProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.Scene
 import scalafx.scene.control.TableColumn._
-import scalafx.scene.control.cell.TextFieldTableCell
 import scalafx.scene.control.{TableColumn, TableView}
 
 //import scalafx.Includes._ // does not compile
@@ -63,8 +62,8 @@ object SimpleTableView extends JFXApp3 {
               cellValueFactory = {
                 _.value.name
               }
-              cellFactory = (_: TableColumn[Person, String]) => new TextFieldTableCell[Person, String]()
-              //            cellFactory = _ => new TextFieldTableCell[Person, String]()
+              //              cellFactory = (_: TableColumn[Person, String]) => new TextFieldTableCell[Person, String]()
+              cellFactory = (cell, value) => cell.text = value
               prefWidth = 180
             }
             )

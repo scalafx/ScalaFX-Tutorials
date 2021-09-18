@@ -10,7 +10,7 @@ resolvers += Resolver.sonatypeRepo("snapshots")
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8")
 
-libraryDependencies += "org.scalafx" %% "scalafx" % "16.0.0-R25-SNAPSHOT"
+libraryDependencies += "org.scalafx" %% "scalafx" % "16.0.0-R25"
 
 // Add OS specific JavaFX dependencies
 val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
