@@ -1,14 +1,12 @@
-// @formatter:off
-
 name         := "Properties"
 organization := "scalafx.org"
 version      := "0.2"
 
-scalaVersion := "2.13.6"
+scalaVersion := "2.13.7"
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8")
 
-libraryDependencies += "org.scalafx" %% "scalafx" % "16.0.0-R25"
+libraryDependencies += "org.scalafx" %% "scalafx" % "17.0.1-R26"
 
 // Add OS specific JavaFX dependencies
 val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
@@ -18,7 +16,7 @@ val osName = System.getProperty("os.name") match {
   case n if n.startsWith("Windows") => "win"
   case _ => throw new Exception("Unknown platform!")
 }
-libraryDependencies ++= javafxModules.map(m => "org.openjfx" % s"javafx-$m" % "16" classifier osName)
+libraryDependencies ++= javafxModules.map(m => "org.openjfx" % s"javafx-$m" % "17.0.1" classifier osName)
 
 resolvers += Opts.resolver.sonatypeSnapshots
 

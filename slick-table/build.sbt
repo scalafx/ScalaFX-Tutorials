@@ -1,19 +1,17 @@
-// @formatter:off
-
 name         := "Slick Table"
 organization := "org.scalafx"
 version      := "0.2"
 
-scalaVersion := "2.13.6"
+scalaVersion := "2.13.7"
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8")
 
 libraryDependencies ++= Seq(
-  "org.scalafx"        %% "scalafx"   % "16.0.0-R25",
-  "com.typesafe.slick" %% "slick"     % "3.3.3",
-  "org.slf4j"           % "slf4j-nop" % "1.7.32",
-  "com.h2database"      % "h2"        % "1.4.200"
-)
+  "org.scalafx" %% "scalafx" % "17.0.1-R26",
+  "com.typesafe.slick" %% "slick" % "3.3.3",
+  "org.slf4j" % "slf4j-nop" % "1.7.32",
+  "com.h2database" % "h2" % "1.4.200"
+  )
 
 // Add OS specific JavaFX dependencies
 val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
@@ -23,7 +21,7 @@ val osName = System.getProperty("os.name") match {
   case n if n.startsWith("Windows") => "win"
   case _ => throw new Exception("Unknown platform!")
 }
-libraryDependencies ++= javafxModules.map(m => "org.openjfx" % s"javafx-$m" % "16" classifier osName)
+libraryDependencies ++= javafxModules.map(m => "org.openjfx" % s"javafx-$m" % "17.0.1" classifier osName)
 
 resolvers += Opts.resolver.sonatypeSnapshots
 
