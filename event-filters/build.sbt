@@ -2,7 +2,7 @@ name         := "Event Filters"
 organization := "scalafx.org"
 version      := "1.0.7"
 
-scalaVersion := "2.13.7"
+scalaVersion := "2.13.8"
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8")
 
