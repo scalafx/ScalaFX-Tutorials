@@ -39,17 +39,13 @@ object EditableTableView extends JFXApp3 {
       columns ++= List(
         new TableColumn[Person, String] {
           text = "First Name"
-          cellValueFactory = {
-            _.value.firstName
-          }
+          cellValueFactory = _.value.firstName
           cellFactory = TextFieldTableCell.forTableColumn[Person]()
           prefWidth = 180
         },
         new TableColumn[Person, String]() {
           text = "Last Name"
-          cellValueFactory = {
-            _.value.lastName
-          }
+          cellValueFactory = _.value.lastName
           cellFactory = TextFieldTableCell.forTableColumn[Person]()
           prefWidth = 180
         }

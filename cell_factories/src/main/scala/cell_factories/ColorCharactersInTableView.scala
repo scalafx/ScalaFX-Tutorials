@@ -1,7 +1,5 @@
 package cell_factories
 
-import javafx.scene.{control => jfxsc}
-import javafx.{util => jfxu}
 import scalafx.application.JFXApp3
 import scalafx.beans.property.StringProperty
 import scalafx.collections.ObservableBuffer
@@ -12,10 +10,6 @@ import scalafx.scene.paint.Color
 import scalafx.scene.text.Text
 import scalafx.scene.{Node, Scene}
 
-/**
- * Example for StackOverflow question "How to color each character differently in a TableView TableCell"
- * [[https://stackoverflow.com/questions/41752376/how-to-color-each-character-differently-in-a-tableview-tablecell]]
- */
 object ColorCharactersInTableView extends JFXApp3 {
 
   class Person(firstName_ : String, lastName_ : String) {
@@ -26,8 +20,8 @@ object ColorCharactersInTableView extends JFXApp3 {
   private val characters = ObservableBuffer[Person](
     new Person("Peggy", "Sue"),
     new Person("Rocky", "Raccoon"),
-    new Person("Bungalow Bill", "Bill")
-  )
+    new Person("Bill", "Bungalow")
+    )
 
   /** Render string as colored text */
   def createColorText(name: String): Node = {
@@ -49,18 +43,8 @@ object ColorCharactersInTableView extends JFXApp3 {
   private val firstNameColumn = new TableColumn[Person, String] {
     text = "First Name"
     cellValueFactory = _.value.firstName
-    // Create cell factory JavaFX way
-    cellFactory = new jfxu.Callback[jfxsc.TableColumn[Person, String], jfxsc.TableCell[Person, String]] {
-      override def call(p: jfxsc.TableColumn[Person, String]): jfxsc.TableCell[Person, String] = {
-        new jfxsc.TableCell[Person, String] {
-          override def updateItem(item: String, empty: Boolean): Unit = {
-            super.updateItem(item, empty)
-            setText(null)
-            val graphic = if (item != null && !empty) createColorText(item) else null
-            setGraphic(graphic)
-          }
-        }
-      }
+    cellFactory = (cell, value) => {
+      cell.graphic = createColorText(value)
     }
     prefWidth = 180
   }
@@ -74,7 +58,7 @@ object ColorCharactersInTableView extends JFXApp3 {
 
   override def start(): Unit = {
     stage = new JFXApp3.PrimaryStage {
-      title = "Table View with Color Text - JavaFX way"
+      title = "Table View with Color Text - ScalaFX way"
       scene = new Scene {
         root = new VBox {
           children = Seq(
