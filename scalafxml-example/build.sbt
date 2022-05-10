@@ -8,7 +8,7 @@ scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", 
 
 Compile / resourceDirectory := (Compile / scalaSource).value
 libraryDependencies ++= Seq(
-  "org.scalafx" %% "scalafx" % "17.0.1-R26",
+  "org.scalafx" %% "scalafx" % "18.0.1-R27",
   "org.scalafx" %% "scalafxml-core-sfx8" % "0.5"
   )
 
@@ -20,7 +20,7 @@ val osName = System.getProperty("os.name") match {
   case n if n.startsWith("Windows") => "win"
   case _ => throw new Exception("Unknown platform!")
 }
-libraryDependencies ++= javafxModules.map(m => "org.openjfx" % s"javafx-$m" % "17.0.1" classifier osName)
+libraryDependencies ++= javafxModules.map(m => "org.openjfx" % s"javafx-$m" % "18.0.1" classifier osName)
 
 resolvers += Opts.resolver.sonatypeSnapshots
 
