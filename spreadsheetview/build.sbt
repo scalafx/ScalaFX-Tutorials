@@ -1,7 +1,7 @@
 name := "SpreadsheetView"
 scalaVersion := "2.13.9"
 
-libraryDependencies += "org.scalafx" %% "scalafx" % "18.0.1-R28"
+libraryDependencies += "org.scalafx" %% "scalafx" % "19.0.0-R30"
 libraryDependencies += "org.controlsfx" % "controlsfx" % "11.1.1"
 
 resolvers += Resolver.mavenLocal

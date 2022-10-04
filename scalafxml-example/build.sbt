@@ -8,7 +8,7 @@ scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", 
 
 Compile / resourceDirectory := (Compile / scalaSource).value
 libraryDependencies ++= Seq(
-  "org.scalafx" %% "scalafx" % "18.0.1-R28",
+  "org.scalafx" %% "scalafx" % "19.0.0-R30",
   "org.scalafx" %% "scalafxml-core-sfx8" % "0.5"
   )
 
