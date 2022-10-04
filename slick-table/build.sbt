@@ -8,9 +8,9 @@ scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", 
 
 libraryDependencies ++= Seq(
   "org.scalafx" %% "scalafx" % "19.0.0-R30",
-  "com.typesafe.slick" %% "slick" % "3.3.3",
-  "org.slf4j" % "slf4j-nop" % "1.7.32",
-  "com.h2database" % "h2" % "1.4.200"
+  "com.typesafe.slick" %% "slick" % "3.4.1",
+  "org.slf4j" % "slf4j-nop" % "2.0.3",
+  "com.h2database" % "h2" % "2.1.214"
   )
 
 resolvers ++= Opts.resolver.sonatypeOssSnapshots
