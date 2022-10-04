@@ -5,7 +5,7 @@ name := "Hello SBT"
 version := "1.0.7"
 
 // Version of Scala used by the project
-scalaVersion := "2.13.8"
+scalaVersion := "2.13.9"
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8")
 

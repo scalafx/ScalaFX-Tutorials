@@ -1,5 +1,5 @@
 name := "SpreadsheetView"
-scalaVersion := "2.13.8"
+scalaVersion := "2.13.9"
 
 libraryDependencies += "org.scalafx" %% "scalafx" % "18.0.1-R28"
 libraryDependencies += "org.controlsfx" % "controlsfx" % "11.1.1"
