@@ -8,7 +8,7 @@ scalaVersion := "2.13.9"
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8")
 
-libraryDependencies += "org.scalafx" %% "scalafx" % "19.0.0-R30"
+libraryDependencies += "org.scalafx" %% "scalafx" % "20.0.0-R31"
 
 resolvers ++= Opts.resolver.sonatypeOssSnapshots
 
