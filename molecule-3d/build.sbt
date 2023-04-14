@@ -10,7 +10,5 @@ scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", 
 
 libraryDependencies += "org.scalafx" %% "scalafx" % "20.0.0-R31"
 
-resolvers ++= Opts.resolver.sonatypeOssSnapshots
-
 // Fork a new JVM for 'run' and 'test:run', to avoid JavaFX double initialization problems
 fork := true
