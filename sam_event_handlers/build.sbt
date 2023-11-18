@@ -2,11 +2,11 @@ name         := "SAM Event Handlers"
 organization := "ScalaFX.org"
 version      := "0.1.3"
 
-scalaVersion := "2.13.10"
+scalaVersion := "2.13.12"
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8")
 
-libraryDependencies += "org.scalafx" %% "scalafx" % "20.0.0-R31"
+libraryDependencies += "org.scalafx" %% "scalafx" % "21.0.0-R32"
 
 resolvers ++= Opts.resolver.sonatypeOssSnapshots
 

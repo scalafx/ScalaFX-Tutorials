@@ -4,11 +4,11 @@ organization := "org.scalafx"
 
 version := "0.2.2"
 
-scalaVersion := "2.13.10"
+scalaVersion := "2.13.12"
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8")
 
-libraryDependencies += "org.scalafx" %% "scalafx" % "20.0.0-R31"
+libraryDependencies += "org.scalafx" %% "scalafx" % "21.0.0-R32"
 
 resolvers ++= Opts.resolver.sonatypeOssSnapshots
 
