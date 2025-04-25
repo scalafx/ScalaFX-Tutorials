@@ -2,11 +2,11 @@ name         := "Properties"
 organization := "scalafx.org"
 version      := "0.3"
 
-scalaVersion := "2.13.12"
+scalaVersion := "2.13.16"
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8")
 
-libraryDependencies += "org.scalafx" %% "scalafx" % "21.0.0-R32"
+libraryDependencies += "org.scalafx" %% "scalafx" % "24.0.0-R35"
 
 resolvers ++= Opts.resolver.sonatypeOssSnapshots
 

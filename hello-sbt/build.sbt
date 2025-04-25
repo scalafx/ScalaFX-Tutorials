@@ -5,12 +5,12 @@ name := "Hello SBT"
 version := "1.0.7"
 
 // Version of Scala used by the project
-scalaVersion := "2.13.12"
+scalaVersion := "2.13.16"
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8")
 
 // Add dependency on ScalaFX library
-libraryDependencies += "org.scalafx" %% "scalafx" % "21.0.0-R32"
+libraryDependencies += "org.scalafx" %% "scalafx" % "24.0.0-R35"
 
 resolvers ++= Opts.resolver.sonatypeOssSnapshots
 

@@ -21,7 +21,7 @@ object ColorCharactersInTableView extends JFXApp3 {
     new Person("Peggy", "Sue"),
     new Person("Rocky", "Raccoon"),
     new Person("Bill", "Bungalow")
-    )
+  )
 
   /** Render string as colored text */
   def createColorText(name: String): Node = {
@@ -30,7 +30,7 @@ object ColorCharactersInTableView extends JFXApp3 {
         case 'r' => Color.Red
         case 'g' => Color.Green
         case 'b' => Color.Blue
-        case _ => Color.Black
+        case _   => Color.Black
       }
       new Text {
         text = char.toString
@@ -57,17 +57,18 @@ object ColorCharactersInTableView extends JFXApp3 {
   }
 
   override def start(): Unit = {
+    val tableView = new TableView[Person]() {
+      columns ++= Seq(firstNameColumn, lastNameColumn)
+    }
     stage = new JFXApp3.PrimaryStage {
       title = "Table View with Color Text - ScalaFX way"
       scene = new Scene {
         root = new VBox {
-          children = Seq(
-            new TableView[Person](characters) {
-              columns ++= Seq(firstNameColumn, lastNameColumn)
-            }
-            )
+          children = Seq(tableView)
         }
       }
     }
+
+    tableView.items = characters
   }
 }
