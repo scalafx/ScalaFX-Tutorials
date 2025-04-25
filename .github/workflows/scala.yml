@@ -13,6 +13,8 @@ jobs:
       uses: actions/setup-java@v24
       with:
         java-version: '24'
+        distribution: 'temurin'
+        cache: sbt
     - uses: sbt/setup-sbt@v1     
     - name: Run compilation as a basic check
       run: sbt +test
